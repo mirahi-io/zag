@@ -1,6 +1,6 @@
 import { indexOfId } from "./get-by-id"
 
-const getValueText = <T extends HTMLElement>(item: T) => item.dataset.valuetext ?? item.textContent ?? ""
+const getValueText = <T extends HTMLElement>(item: T) => item.dataset["valuetext"] ?? item.textContent ?? ""
 
 const match = (valueText: string, query: string) => valueText.toLowerCase().startsWith(query.toLowerCase())
 
