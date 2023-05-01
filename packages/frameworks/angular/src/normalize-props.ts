@@ -1,17 +1,7 @@
 import { createNormalizer } from "@zag-js/types"
-import type * as Angular from "a"
+import type * as Angular from "@angular/core"
 
-type ReservedProps = {
-  key?: string | number | symbol
-  ref?: Vue.VNodeRef
-}
-
-type Attrs<T> = T & ReservedProps
-
-type PropTypes = JSX.IntrinsicElements & {
-  element: Attrs<Vue.HTMLAttributes>
-  style: Vue.CSSProperties
-}
+type Attrs<T> = T
 
 type Dict = Record<string, string>
 
@@ -30,7 +20,7 @@ const propMap = {
   defaultChecked: "checked",
 }
 
-function toVueProp(prop: string) {
+function toAngularProp(prop: string) {
   if (prop in propMap) return propMap[prop]
 
   if (prop.startsWith("on")) {
@@ -40,7 +30,8 @@ function toVueProp(prop: string) {
   return prop.toLowerCase()
 }
 
-export const normalizeProps = createNormalizer<PropTypes>((props: Dict) => {
+// TODO fix any
+export const normalizeProps = createNormalizer<any>((props: Dict) => {
   const normalized: Dict = {}
   for (const key in props) {
     const value = props[key]
@@ -48,10 +39,10 @@ export const normalizeProps = createNormalizer<PropTypes>((props: Dict) => {
       if (typeof value === "string") {
         normalized["innerHTML"] = value
       } else if (process.env.NODE_ENV !== "production" && value != null) {
-        console.warn("[Vue Normalize Prop] : avoid passing non-primitive value as `children`")
+        console.warn("[Angular Normalize Prop] : avoid passing non-primitive value as `children`")
       }
     } else {
-      normalized[toVueProp(key)] = props[key]
+      normalized[toAngularProp(key)] = props[key]
     }
   }
   return normalized

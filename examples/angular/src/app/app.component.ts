@@ -1,14 +1,10 @@
 import { Component, computed, inject, OnInit, signal } from "@angular/core"
 import { CommonModule } from "@angular/common"
 import { ActivatedRoute, RouterLink, RouterOutlet } from "@angular/router"
-// TODO fix import on shared
-// import { routesData } from "@zag-js/shared"
-import * as sharedTwo from "@zag-js/shared"
+import { routesData } from "@zag-js/shared"
 import { toSignal } from "@angular/core/rxjs-interop"
-import { routesData } from "./app.routes"
 import { dataAttr } from "@zag-js/dom-query"
 
-console.log("dataAttr", sharedTwo, dataAttr)
 @Component({
   selector: "zag-root",
   standalone: true,

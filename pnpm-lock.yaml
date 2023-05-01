@@ -1479,6 +1479,43 @@ importers:
         specifier: 2.2.0
         version: 2.2.0
 
+  packages/frameworks/angular:
+    dependencies:
+      '@zag-js/core':
+        specifier: workspace:*
+        version: link:../../core
+      '@zag-js/store':
+        specifier: workspace:*
+        version: link:../../store
+      '@zag-js/types':
+        specifier: workspace:*
+        version: link:../../types
+    devDependencies:
+      '@angular/compiler':
+        specifier: ^16.0.0-rc.3
+        version: 16.0.0-rc.3(@angular/core@16.0.0-rc.3)
+      '@angular/core':
+        specifier: ^16.0.0-rc.3
+        version: 16.0.0-rc.3(rxjs@7.8.0)(zone.js@0.13.0)
+      '@angular/platform-browser':
+        specifier: ^16.0.0-rc.3
+        version: 16.0.0-rc.3(@angular/animations@16.0.0-rc.3)(@angular/common@16.0.0-rc.3)(@angular/core@16.0.0-rc.3)
+      '@angular/platform-browser-dynamic':
+        specifier: ^16.0.0-rc.3
+        version: 16.0.0-rc.3(@angular/common@16.0.0-rc.3)(@angular/compiler@16.0.0-rc.3)(@angular/core@16.0.0-rc.3)(@angular/platform-browser@16.0.0-rc.3)
+      '@zag-js/utils':
+        specifier: workspace:*
+        version: link:../../utilities/core
+      clean-package:
+        specifier: 2.2.0
+        version: 2.2.0
+      rxjs:
+        specifier: ~7.8.0
+        version: 7.8.0
+      zone.js:
+        specifier: ~0.13.0
+        version: 0.13.0
+
   packages/frameworks/react:
     dependencies:
       '@zag-js/core':
@@ -2899,7 +2936,6 @@ packages:
     dependencies:
       '@angular/core': 16.0.0-rc.3(rxjs@7.8.0)(zone.js@0.13.0)
       tslib: 2.5.0
-    dev: false
 
   /@angular/cli@16.0.0-rc.4:
     resolution: {integrity: sha512-zLq+Rmi+IX6rlz/lbiCfm7RzrDCQaYgPm3mnwjplmDBDrQbuL+X9y0Z6WKgFptr63vRyEBYRtYpZmdyrXxZkYg==}
@@ -2940,7 +2976,6 @@ packages:
       '@angular/core': 16.0.0-rc.3(rxjs@7.8.0)(zone.js@0.13.0)
       rxjs: 7.8.0
       tslib: 2.5.0
-    dev: false
 
   /@angular/compiler-cli@16.0.0-rc.3(@angular/compiler@16.0.0-rc.3)(typescript@5.0.2):
     resolution: {integrity: sha512-/hyPW4/yw5i/sxKbLIOK4NfFux6wajYn7ifgIKBX8jQ+/NheJ7XLaScf8LMC8NKuRgTFHTUr6eeMmeZy9ncYkQ==}
@@ -3017,7 +3052,6 @@ packages:
       '@angular/core': 16.0.0-rc.3(rxjs@7.8.0)(zone.js@0.13.0)
       '@angular/platform-browser': 16.0.0-rc.3(@angular/animations@16.0.0-rc.3)(@angular/common@16.0.0-rc.3)(@angular/core@16.0.0-rc.3)
       tslib: 2.5.0
-    dev: false
 
   /@angular/platform-browser@16.0.0-rc.3(@angular/animations@16.0.0-rc.3)(@angular/common@16.0.0-rc.3)(@angular/core@16.0.0-rc.3):
     resolution: {integrity: sha512-WGnhDDQqotbkmclhspu/QZnFeJxRlEtKU9KYT3j5et6/mNtKGiKTG6gS6m1+PCbFWl7DL26nP/jwuNDjsQ411g==}
@@ -3034,7 +3068,6 @@ packages:
       '@angular/common': 16.0.0-rc.3(@angular/core@16.0.0-rc.3)(rxjs@7.8.0)
       '@angular/core': 16.0.0-rc.3(rxjs@7.8.0)(zone.js@0.13.0)
       tslib: 2.5.0
-    dev: false
 
   /@angular/router@16.0.0-rc.3(@angular/common@16.0.0-rc.3)(@angular/core@16.0.0-rc.3)(@angular/platform-browser@16.0.0-rc.3)(rxjs@7.8.0):
     resolution: {integrity: sha512-64T7RyDvrVu917KKJf0P57GRy6g301TBhBfKdqRq3Yx8h1nEWCfXH0Y7ouaiedLBBPIryRuAyEsMgBv+SV18eg==}

@@ -1,22 +1,22 @@
 import type { Machine, StateMachine as S } from "@zag-js/core"
-import { onBeforeUnmount, onMounted, shallowRef } from "vue"
+import { DestroyRef, inject, signal } from "@angular/core"
 
 export function useActor<
   TContext extends Record<string, any>,
   TState extends S.StateSchema,
   TEvent extends S.EventObject = S.AnyEventObject,
 >(service: Machine<TContext, TState, TEvent>) {
-  const state = shallowRef(service.state)
+  const state = signal(service.state)
 
-  onMounted(() => {
+  afterNextRender(() => {
     const unsubscribe = service.subscribe((nextState) => {
-      state.value = nextState
+      state.set(nextState)
     })
 
-    onBeforeUnmount(() => {
+    inject(DestroyRef).onDestroy(() => {
       unsubscribe?.()
     })
   })
 
-  return [state, service.send] as const
+  return { state, send: service.send } as const
 }
