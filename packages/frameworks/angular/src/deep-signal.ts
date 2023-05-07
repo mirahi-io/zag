@@ -1,4 +1,4 @@
-import { WritableSignal, signal } from "@angular/core"
+import { WritableSignal, signal, isSignal } from "@angular/core"
 
 const $PROXY = Symbol("$PROXY")
 
@@ -13,7 +13,10 @@ export function signalDeep<T extends Object>(obj: T): T {
     return obj
   }
 
-  return new Proxy(obj, {
+  let param = obj
+  // TODO handle signal object
+
+  return new Proxy(param, {
     get(target: T, prop: string | symbol, receiver) {
       if (prop === $PROXY) {
         return receiver

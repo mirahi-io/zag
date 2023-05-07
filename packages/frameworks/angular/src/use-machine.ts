@@ -1,6 +1,7 @@
 import type { MachineSrc, StateMachine as S } from "@zag-js/core"
 import { WritableSignal, DestroyRef, effect, inject, Signal, signal } from "@angular/core"
 import { signalDeep } from "./deep-signal"
+import { afterMount } from "./afterMount"
 
 type MachineOptions<
   TContext extends Record<string, any>,
@@ -20,7 +21,7 @@ export function useService<
   const _machine = typeof machine === "function" ? machine() : machine
   const service = context ? _machine.withContext(context()) : _machine
 
-  afterNextRender(() => {
+  afterMount(() => {
     service.start(hydratedState)
 
     if (service.state.can("SETUP")) {
@@ -62,7 +63,7 @@ export function useMachine<
   const service = useService(machine, options)
   const state = signal(service.state)
 
-  afterNextRender(() => {
+  afterMount(() => {
     const unsubscribe = service.subscribe((nextState) => {
       state.set(nextState)
     })
